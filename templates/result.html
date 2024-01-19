@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <h2>The star selling product is: {{ star_product }}</h2>
+
+    <h2>Order Recommendations:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Product Line</th>
+                <th>Demand Predictions</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in order_recommendations.iterrows() %}
+                <tr>
+                    <td>{{ record[1]['City'] }}</td>
+                    <td>{{ record[1]['Product line'] }}</td>
+                    <td>{{ record[1]['Demand_Predictions'] }}</td>
+                    <td>{{ record[1]['Quantity'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
