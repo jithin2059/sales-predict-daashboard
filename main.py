@@ -46,5 +46,5 @@ def upload_file():
 
     return render_template("upload.html")
 
-app.run(host='0.0.0.0', port=5000, debug=True)
+app.run(host='0.0.0.0', debug=False, threaded=False)
 
