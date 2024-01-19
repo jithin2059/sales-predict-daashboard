@@ -46,6 +46,5 @@ def upload_file():
 
     return render_template("upload.html")
 
-if __name__ == "__main__":
-    app.run(host='35.177.151.207', debug=True, port=5000)
+app.run()
 
