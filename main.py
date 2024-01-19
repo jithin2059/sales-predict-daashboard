@@ -46,5 +46,5 @@ def upload_file():
 
     return render_template("upload.html")
 
-app.run()
+app.run(debug=True)
 
