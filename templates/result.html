@@ -3,32 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+    <title>Sales Predict Dashboard - Result</title>
+    <style>
+        body {
+            background-color: #9fd1ff;
+            font-family: Copperplate, Fantasy;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Result</h1>
-    <h2>The star selling product is: {{ star_product }}</h2>
-
-    <h2>Order Recommendations:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>City</th>
-                <th>Product Line</th>
-                <th>Demand Predictions</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for record in order_recommendations.iterrows() %}
+    <div class="container">
+        <h1>Result</h1>
+        <h2>The star selling product is: {{ star_product }}</h2>
+        <h2>Order Recommendations:</h2>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ record[1]['City'] }}</td>
-                    <td>{{ record[1]['Product line'] }}</td>
-                    <td>{{ record[1]['Demand_Predictions'] }}</td>
-                    <td>{{ record[1]['Quantity'] }}</td>
+                    <th>City</th>
+                    <th>Product Line</th>
+                    <th>Demand Predictions</th>
+                    <th>Quantity</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for record in order_recommendations.iterrows() %}
+                    <tr>
+                        <td>{{ record[1]['City'] }}</td>
+                        <td>{{ record[1]['Product line'] }}</td>
+                        <td>{{ record[1]['Demand_Predictions'] }}</td>
+                        <td>{{ record[1]['Quantity'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
