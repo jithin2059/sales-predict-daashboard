@@ -31,7 +31,7 @@ def demand_forecasting(df):
     df['Demand_Predictions'] = model.predict(features)
 
     order_recommendations = df.groupby(['City', 'Product line']).agg({
-        'Demand_Predictions': 'sum',
+      
         'Quantity': 'sum'
     }).reset_index()
     
