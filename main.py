@@ -15,21 +15,28 @@ def star_product(df):
 
     return star_product
 
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
 def demand_forecasting(df):
     features = df[['Unit price', 'Quantity', 'Tax 5%', 'gross income', 'Rating']]
     target = df['Total']
+    
     X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
 
-    model = RandomForestRegressor()
+    model = LinearRegression()
+    
     model.fit(X_train, y_train)
-
+    
     df['Demand_Predictions'] = model.predict(features)
+
     order_recommendations = df.groupby(['City', 'Product line']).agg({
         'Demand_Predictions': 'sum',
         'Quantity': 'sum'
     }).reset_index()
-
+    
     return order_recommendations
+
 
 @app.route("/", methods=["GET", "POST"])
 def upload_file():
